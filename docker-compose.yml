@@ -1,0 +1,11 @@
+services:
+  mqtt-source:
+    image: mfscy/kafka-mqtt-source
+    environment:
+      - MQTT_HOST=127.0.0.1
+      # - MQTT_PORT=1883
+      # - MQTT_USERNAME=username
+      # - MQTT_PASSWORD=password
+      # - MQTT_TOPIC=mataelang/sensor/v3/#
+      - KAFKA_BOOSTRAP_SERVERS=127.0.0.1:9092
+      # - KAFKA_PRODUCE_TOPIC=sensor_events
