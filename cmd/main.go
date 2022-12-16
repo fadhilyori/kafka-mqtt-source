@@ -11,6 +11,7 @@ import (
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
+	"github.com/google/uuid"
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
 )
@@ -84,7 +85,7 @@ func main() {
 
 	log.Printf("Loading configuration.")
 
-	mqttClientID := "mataelang_mqtt_source"
+	mqttClientID := uuid.New().String()
 
 	log.Printf("MQTT Broker Host\t: %s\n", *mqttBrokerHost)
 	log.Printf("MQTT Broker Port\t: %d\n", *mqttBrokerPort)
@@ -155,8 +156,10 @@ func main() {
 
 				} else {
 					successCount += 1
-					log.Printf("Successfully produced record to topic %s partition [%d] @ offset %v\n",
-						*ev.TopicPartition.Topic, ev.TopicPartition.Partition, ev.TopicPartition.Offset)
+					if *verboseLog {
+						log.Printf("Successfully produced record to topic %s partition [%d] @ offset %v\n",
+							*ev.TopicPartition.Topic, ev.TopicPartition.Partition, ev.TopicPartition.Offset)
+					}
 				}
 			}
 		}

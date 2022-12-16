@@ -3,8 +3,9 @@ module github.com/mata-elang-stable/mqtt-stream
 go 1.18
 
 require (
-	github.com/confluentinc/confluent-kafka-go v1.9.2
+	github.com/confluentinc/confluent-kafka-go v1.9.3-RC3
 	github.com/eclipse/paho.mqtt.golang v1.4.2
+	github.com/google/uuid v1.3.0
 	golang.org/x/text v0.4.0
 )
 

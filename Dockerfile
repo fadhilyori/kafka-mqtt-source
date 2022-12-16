@@ -14,7 +14,7 @@ RUN go mod download
 
 COPY . /app/
 
-RUN GOOS=linux GOARCH=${BUILDPLATFORM} GO111MODULE=on CGO_ENABLED=1 go build -tags dynamic -tags musl -mod vendor -o me-mqtt-source ./cmd/
+RUN GOOS=linux GOARCH=${BUILDPLATFORM} GO111MODULE=on CGO_ENABLED=1 go build -tags dynamic -tags musl -o me-mqtt-source ./cmd/
 
 FROM golang:1.19-alpine
 

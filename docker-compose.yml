@@ -7,5 +7,5 @@ services:
       # - MQTT_USERNAME=username
       # - MQTT_PASSWORD=password
       # - MQTT_TOPIC=mataelang/sensor/v3/#
-      - KAFKA_BOOSTRAP_SERVERS=127.0.0.1:9092
+      - KAFKA_BOOSTRAP_SERVERS=kafka:9092
       # - KAFKA_PRODUCE_TOPIC=sensor_events
