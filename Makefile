@@ -4,7 +4,7 @@ GOTEST=$(GOCMD) test
 GOVET=$(GOCMD) vet
 BINARY_NAME=me-mqtt-source
 VERSION?=1.1
-TARGET_PLATFORMS=linux/amd64 linux/arm64
+TARGET_PLATFORMS=linux/amd64
 DOCKER_REPO_URL=mataelang/kafka-mqtt-source
 
 comma:= ,
