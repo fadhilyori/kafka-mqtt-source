@@ -18,16 +18,21 @@ RESET  := $(shell tput -Txterm sgr0)
 
 build: vendor build-linux ## Build the project and put the output binary in out/bin/
 
-build-linux:
+build-linux: 
 	@go mod tidy
 	@$(foreach platform, $(TARGET_PLATFORMS), \
 		echo "Compiling for $(platform)"; \
 		GOOS=$(word 1,$(subst /, ,$(platform))) GOARCH=$(word 2,$(subst /, ,$(platform))) GO111MODULE=on CGO_ENABLED=1 $(GOCMD) build -o out/bin/$(BINARY_NAME)-$(word 1,$(subst /, ,$(platform)))-$(word 2,$(subst /, ,$(platform))) ./cmd/ ;\
 	)
 	
-build-docker-multiarch:
+build-docker-multiarch: ## Build Docker Image then push to Docker Hub repository
 	@echo "Building docker image for platform: $(TARGET_PLATFORMS)"
 	@docker buildx build --platform $(subst $(space),$(comma),$(TARGET_PLATFORMS)) -t $(DOCKER_REPO_URL):latest -t $(DOCKER_REPO_URL):$(VERSION) --push .
+
+build-docker-image: ## Build Docker Image locally
+	@echo "Building docker image"
+	@docker build -t kafka-mqtt-source .
+	@echo "Build success. Image name: kafka-mqtt-source"
 
 clean: ## Remove build related file
 	@rm -rf ./bin
