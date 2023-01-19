@@ -3,17 +3,18 @@
 Simple app to collect messages from MQTT broker (Mosquitto) and send it to Apache Kafka
 
 ## Requirements
- - [Golang](https://go.dev/dl)
+ - [Golang 1.17 or more](https://go.dev/dl)
  - make (linux)
 
 ## Build with Makefile
  - Show the make help: `make help`
  - Build the binary: `make build`
  - The binary will be available at `out/bin` directory.
+ - Build docker image: make build-docker-image
 
 ## Run using go command
  - `go mod download`
- - `go run main.go`
+ - `go run cmd/main.go`
 
 ## Show help
 `me-mqtt-source --help`
