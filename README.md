@@ -12,3 +12,10 @@ Simple app to collect messages from MQTT broker (Mosquitto) and send it to Apach
  - The binary will be available at `out/bin` directory.
  - Build docker image: `make build-docker-image`
 
+## Configure main.go
+## Run using go command
+ - `go mod download`
+ - `go run cmd/main.go`
+
+## Show help
+`me-mqtt-source --help`
